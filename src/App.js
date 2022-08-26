@@ -1,9 +1,9 @@
-import "./App.css";
+import SortingVisualizer from "./SortingVisualizer/SortingVisualizer";
 
 function App() {
   return (
     <div className="App">
-      <h1>Abhishek Tripathi</h1>
+      <SortingVisualizer />
     </div>
   );
 }
