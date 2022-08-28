@@ -4,3 +4,23 @@
     align-items: center;
     flex-direction: column;
 }
+
+.barsWrapper {
+    height: 80vh;
+    width: 80vw;
+    /* background-color: lightcoral; */
+    display: flex;
+    justify-content: space-evenly;
+    align-items: flex-end;
+}
+
+.bar {
+    background-color: aqua;
+    font-size: 12px;
+}
+
+.inputsWrapper {
+    display: flex;
+    justify-content: space-between;
+    width: 80vw;;
+}
