@@ -74,18 +74,21 @@ function SortingVisualizer() {
           <button className="button uppperBtn" onClick={sortArray}>
             Sort Array
           </button>
-          {/* SLIDER ::: NUMBER OF BARS */}
         </div>
-        <input
-          type="range"
-          id="slider"
-          min={"5"}
-          max={"200"}
-          value={numOfBars}
-          onChange={(event) => {
-            setNumOfBars(event.target.value);
-          }}
-        />
+        {/* SLIDER ::: NUMBER OF BARS */}
+        <div className="sliderWrapper">
+          <input
+            type="range"
+            id="slider"
+            min={"5"}
+            max={"200"}
+            value={numOfBars}
+            onChange={(event) => {
+              setNumOfBars(event.target.value);
+            }}
+          />
+          <p id="sliderRangeValue">{numOfBars}</p>
+        </div>
       </div>
       {/* CONTAINER ::: BARS */}
       <div
