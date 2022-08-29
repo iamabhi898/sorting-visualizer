@@ -5,22 +5,108 @@
     flex-direction: column;
 }
 
+.inputsWrapper {
+    margin-top: 20px;
+    width: 80vw;
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+}
+
+.upperButtonWrapper {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    width: 40%;
+}
+
+.button {
+    background-color: white;
+    color: #136462;
+    font-weight: 600;
+    font-family:'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+    font-size: 0.9rem;
+    border: 0px;
+    border-radius: 8px;
+    padding: 8px;
+    cursor: pointer;
+    /* for shadow */
+    -webkit-box-shadow: 0px 8px 49px -9px rgba(0,0,0,0.38);
+    -moz-box-shadow: 0px 8px 49px -9px rgba(0,0,0,0.38);
+    box-shadow: 0px 8px 49px -9px rgba(0,0,0,0.38);
+}
+
+.button:hover {
+    background-color: rgb(240, 240, 240);
+}
+
+.button:active {
+    transform: translateY(2px);
+}
+
+#slider {
+    -webkit-appearance: none;
+    width: 170px;
+    height: 10px;
+    border-radius: 5px;  
+    background: #b5b5b5;
+    opacity: 0.7;
+    -webkit-transition: .2s;
+    transition: opacity .2s;
+}
+  
+#slider::-webkit-slider-thumb {
+    -webkit-appearance: none;
+    appearance: none;
+    width: 15px;
+    height: 15px;
+    border-radius: 50%; 
+    background: #136462;
+    cursor: pointer;
+}
+  
+#slider::-moz-range-thumb {
+    width: 15px;
+    height: 15px;
+    border-radius: 50%;
+    background: #136462;
+    cursor: pointer;
+}
+
 .barsWrapper {
     height: 80vh;
     width: 80vw;
+    margin: 10px;
+    font-size: 1.5rem;
+    color: white;
     /* background-color: lightcoral; */
     display: flex;
     justify-content: space-evenly;
-    align-items: flex-end;
 }
 
 .bar {
-    background-color: aqua;
-    font-size: 12px;
+    background-color: #54BAB9;
+    font-style: italic;
+    display: flex;
+    justify-content: center;
 }
 
-.inputsWrapper {
-    display: flex;
-    justify-content: space-between;
-    width: 80vw;;
+@media only screen and (max-width: 1000px) {
+    .upperButtonWrapper {
+        width: 50%;
+    }
 }
+
+@media only screen and (max-width: 600px) {
+    .barsWrapper {
+        width: 92vw;
+        font-size: 1rem;
+    }
+    .inputsWrapper {
+        width: 92vw;
+    }
+    .upperButtonWrapper {
+        width: 60%;
+    }
+}
+  
