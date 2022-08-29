@@ -3,7 +3,7 @@ import "./SortingVisualizer.css";
 
 function SortingVisualizer() {
   // USE STATE HOOKS, VALUES :::
-  // array
+  // array state
   const [arr, setArr] = useState([]);
   // dummy count
   const [handleGenerateRandomArray, SetHandleGenerateRandomArray] =
