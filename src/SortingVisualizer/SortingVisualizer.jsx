@@ -36,6 +36,23 @@ function SortingVisualizer() {
     setBottomUp(!bottomUp);
   }
 
+  // REVERSE ARRAY
+  function reverseArray() {
+    setArr((arr) => {
+      const temp = [...arr];
+      temp.reverse();
+      return temp;
+    });
+  }
+
+  function sortArray() {
+    setArr((arr) => {
+      const temp = [...arr];
+      temp.sort((a, b) => a - b);
+      return temp;
+    });
+  }
+
   return (
     <div className="svWrapper">
       <div className="inputsWrapper">
@@ -50,6 +67,12 @@ function SortingVisualizer() {
           {/* BUTTON ::: TOGGLE BAR VIEW */}
           <button className="button uppperBtn" onClick={toggleBarView}>
             Toggle Bar View
+          </button>
+          <button className="button uppperBtn" onClick={reverseArray}>
+            Reverse Array
+          </button>
+          <button className="button uppperBtn" onClick={sortArray}>
+            Sort Array
           </button>
           {/* SLIDER ::: NUMBER OF BARS */}
         </div>
@@ -78,7 +101,7 @@ function SortingVisualizer() {
               key={key}
               style={{ height: num + "%", width: wid + "%" }}
             >
-              {numOfBars <= 15 ? num : null}
+              {numOfBars <= 15 ? num : null}{" "}
             </div>
           );
         })}
