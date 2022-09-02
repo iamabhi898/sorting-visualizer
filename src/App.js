@@ -1,9 +1,14 @@
-import SortingVisualizer from "./SortingVisualizer/SortingVisualizer";
+import SortingVisualizer from "./app/SortingVisualizer/SortingVisualizer";
+import TopToolbar from "./app/TopToolbar/TopToolbar";
+import BottomToolbar from "./app/BottomToolbar/BottomToolbar";
+import styles from "./styles/styles.module.css";
 
 function App() {
   return (
-    <div className="App">
+    <div className={`${styles.svWrapper}`}>
+      <TopToolbar />
       <SortingVisualizer />
+      {/* <BottomToolbar /> */}
     </div>
   );
 }

@@ -14,10 +14,11 @@
 }
 
 .upperButtonWrapper {
+    width: 50%;
+    margin-left: 10px;
     display: flex;
     justify-content: space-between;
     align-items: center;
-    width: 50%;
 }
 
 .button {
@@ -69,6 +70,10 @@
     -webkit-transition: .2s;
     transition: opacity .2s;
 }
+
+#slider:hover {
+    background: #bebebe;
+}
   
 #slider::-webkit-slider-thumb {
     -webkit-appearance: none;
@@ -78,6 +83,14 @@
     border-radius: 50%; 
     background: #136462;
     cursor: pointer;
+}
+
+#slider::-webkit-slider-thumb:hover {
+    background: #1c9492;
+}
+
+#slider::-webkit-slider-thumb:active {
+    transform: translateY(1px);
 }
   
 #slider::-moz-range-thumb {
@@ -108,7 +121,7 @@
 
 @media only screen and (max-width: 1000px) {
     .upperButtonWrapper {
-        width: 50%;
+        width: 40%;
     }
 }
 
@@ -121,7 +134,7 @@
         width: 92vw;
     }
     .upperButtonWrapper {
-        width: 60%;
+        width: 40%;
     }
 }
   
