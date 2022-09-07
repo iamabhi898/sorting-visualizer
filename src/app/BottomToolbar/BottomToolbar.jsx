@@ -1,18 +1,57 @@
 import React, { useState } from "react";
 import styles from "../../styles/styles.module.css";
 import { useSelector, useDispatch } from "react-redux";
-import { sortArray } from "../../redux/reducer";
+import { sortArray, setArray } from "../../redux/reducer";
+import bubbleSort from "../SortingVisualizer/Algorithms/BubbleSort";
+import heapSort from "../SortingVisualizer/Algorithms/HeapSort";
+import mergeSort from "../SortingVisualizer/Algorithms/MergeSort";
+import quickSort from "../SortingVisualizer/Algorithms/QuickSort";
 
 const BottomToolbar = () => {
   // DISPATCHER
   const dispatch = useDispatch();
+  // SELECTOR
+  const { array, numOfBars } = useSelector((state) => state.globalState);
   // states
   const [selectToggle, setSelectToggle] = useState(false);
   const [crrSelectSort, setCrrSelectedSort] = useState("");
 
+  // Handle Visualization
+  const visualize = (arrInstance) => {
+    let i = 0;
+    const intervalChange = setInterval(() => {
+      if (i >= arrInstance.length) {
+        dispatch(arrInstance[arrInstance.length - 1]);
+        clearInterval(intervalChange);
+      }
+      dispatch(setArray(arrInstance[i]));
+      i = i + 1;
+    }, 20);
+  };
+
+  // Handle Array Instances of Sorting Algos
+  const handleArrayInstances = (sortAlgo) => {
+    switch (sortAlgo) {
+      case "bubble":
+        visualize(bubbleSort(array));
+        break;
+      case "heap":
+        visualize(heapSort(array));
+        break;
+      case "merge":
+        visualize(mergeSort(array));
+        break;
+      case "quick":
+        visualize(quickSort(array));
+        break;
+      default:
+        console.log("no sorting algo opted");
+    }
+  };
+
   return (
     <div className={styles.inputsWrapper}>
-      <div className={styles.waterMark}>{crrSelectSort}</div>
+      <div className={styles.waterMark}>{crrSelectSort.toUpperCase()}</div>
       <div className={`${styles.leftButtonWrapper} ${styles.dropupWrapper}`}>
         <button
           className={styles.button}
@@ -34,7 +73,8 @@ const BottomToolbar = () => {
           <button
             className={styles.button}
             onClick={() => {
-              setCrrSelectedSort("MERGE SORT");
+              setCrrSelectedSort("Merge Sort");
+              handleArrayInstances("merge");
             }}
           >
             Merge Sort
@@ -42,7 +82,8 @@ const BottomToolbar = () => {
           <button
             className={styles.button}
             onClick={() => {
-              setCrrSelectedSort("HEAP SORT");
+              setCrrSelectedSort("Heap Sort");
+              handleArrayInstances("heap");
             }}
           >
             Heap Sort
@@ -50,7 +91,8 @@ const BottomToolbar = () => {
           <button
             className={styles.button}
             onClick={() => {
-              setCrrSelectedSort("QUICK SORT");
+              setCrrSelectedSort("Quick Sort");
+              handleArrayInstances("quick");
             }}
           >
             Quick Sort
@@ -58,7 +100,8 @@ const BottomToolbar = () => {
           <button
             className={styles.button}
             onClick={() => {
-              setCrrSelectedSort("BUBBLE SORT");
+              setCrrSelectedSort("Bubble Sort");
+              handleArrayInstances("bubble");
             }}
           >
             Bubble Sort
@@ -67,7 +110,7 @@ const BottomToolbar = () => {
       </div>
       <div className={styles.rightButtonWrapper}>
         <button className={styles.button} onClick={() => dispatch(sortArray())}>
-          Sort Array
+          Sort: {crrSelectSort}
         </button>
       </div>
     </div>

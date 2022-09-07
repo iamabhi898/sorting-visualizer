@@ -37,6 +37,9 @@ export const stateSlice = createSlice({
       }
       state.array = temp;
     },
+    setArray: (state, action) => {
+      state.array = action.payload;
+    },
   },
 });
 
@@ -46,6 +49,7 @@ export const {
   reverseArray,
   sortArray,
   setNumOfBars,
+  setArray,
 } = stateSlice.actions;
 
 export default stateSlice.reducer;
