@@ -5,7 +5,6 @@ import {
   generateRandomArr,
   toggleBarView,
   reverseArray,
-  sortArray,
   setNumOfBars,
 } from "../../redux/reducer";
 
@@ -17,7 +16,7 @@ const TopToolbar = () => {
 
   return (
     <div className={styles.inputsWrapper}>
-      <div className={styles.upperButtonWrapper}>
+      <div className={styles.leftButtonWrapper}>
         {/* BUTTON ::: GENERATE NEW RANDOM ARRAY */}
         <button
           className={styles.button}
@@ -38,12 +37,9 @@ const TopToolbar = () => {
         >
           Reverse Array
         </button>
-        <button className={styles.button} onClick={() => dispatch(sortArray())}>
-          Sort Array
-        </button>
       </div>
       {/* SLIDER ::: NUMBER OF BARS */}
-      <div className={styles.sliderWrapper}>
+      <div className={styles.rightButtonWrapper}>
         <input
           type="range"
           id={styles.slider}

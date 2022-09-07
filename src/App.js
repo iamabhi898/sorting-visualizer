@@ -8,7 +8,7 @@ function App() {
     <div className={`${styles.svWrapper}`}>
       <TopToolbar />
       <SortingVisualizer />
-      {/* <BottomToolbar /> */}
+      <BottomToolbar />
     </div>
   );
 }

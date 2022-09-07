@@ -1,19 +1,23 @@
+ /* APP - CONTAINER (TOPBAR, SV, BOTTOMBAR) */
 .svWrapper {
     display: flex;
     justify-content: center;
     align-items: center;
     flex-direction: column;
+    user-select: none;
 }
 
+ /* TOPBAR/BOTTOM BAR CONTAINER */
 .inputsWrapper {
-    margin-top: 10px;
+    height: 10vh;
     width: 80vw;
     display: flex;
     justify-content: space-between;
     align-items: center;
 }
 
-.upperButtonWrapper {
+ /* LEFT PART OF TOP/BOTTOMBAR - CONTAINER */
+.leftButtonWrapper {
     width: 50%;
     margin-left: 10px;
     display: flex;
@@ -21,6 +25,7 @@
     align-items: center;
 }
 
+/* BUTTONS */
 .button {
     background-color: white;
     color: #136462;
@@ -45,12 +50,15 @@
     transform: translateY(2px);
 }
 
-.sliderWrapper {
+/* RIGHT PART OF TOP/BOTTOMBAR - CONTAINER */
+.rightButtonWrapper {
+    margin-right: 10px;
     display: flex;
     justify-content: space-between;
     align-items: center;
 }
 
+/* SLIDER */
 #sliderRangeValue {
     margin: 5px;
     width: 30px;
@@ -63,7 +71,6 @@
     -webkit-appearance: none;
     width: 160px;
     height: 8px;
-    margin-right: 10px;
     border-radius: 5px;  
     background: #b5b5b5;
     opacity: 0.7;
@@ -101,13 +108,13 @@
     cursor: pointer;
 }
 
+ /* SORTING VISUALIZER - CONTAINER & BARS */
 .barsWrapper {
     height: 80vh;
     width: 80vw;
-    margin: 10px;
     font-size: 1.5rem;
     color: white;
-    /* background-color: lightcoral; */
+    /* background-color: black; */
     display: flex;
     justify-content: space-evenly;
 }
@@ -119,6 +126,42 @@
     justify-content: center;
 }
 
+/* DROP UP MENU - SORTING ALGORITHMS */
+.dropupWrapper {
+    position: relative;
+    width: auto;
+}
+  
+.dropupMenu {
+    position: absolute;
+    min-width: 150px;
+    bottom: 30px;
+    height: 25vh;
+    padding: 0px 0px 10px 10px;
+    z-index: 1;
+    justify-content: space-evenly;
+    align-items: flex-start;
+    flex-direction: column;
+}
+
+/* WATER MARK - SORTING ALGORITHM */
+.waterMark {
+    font-size: 6rem;
+    font-weight: 700;
+    font-style: italic;
+    color: #cacaca;
+    padding-left: 5vw;
+    position: absolute;
+    height: 100vh;
+    top: 0px;
+    left: 0px;
+    /* background-color: pink; */
+    z-index: -100;
+    display: flex;
+    align-items: center;
+}
+
+/* RESPONSIVENESS  */
 @media only screen and (max-width: 1000px) {
     .upperButtonWrapper {
         width: 40%;
