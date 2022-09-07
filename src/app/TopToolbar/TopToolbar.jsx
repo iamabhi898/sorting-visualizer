@@ -52,7 +52,6 @@ const TopToolbar = () => {
           value={numOfBars}
           onChange={(event) => {
             dispatch(setNumOfBars(event.target.value));
-            dispatch(generateRandomArr(numOfBars));
           }}
         />
         <p id={styles.sliderRangeValue}>{numOfBars}</p>

@@ -30,6 +30,12 @@ export const stateSlice = createSlice({
     },
     setNumOfBars: (state, action) => {
       state.numOfBars = action.payload;
+      // also generrate new random array
+      const temp = [];
+      for (let i = 0; i < action.payload; i++) {
+        temp.push(randomNumberInRange(5, 100));
+      }
+      state.array = temp;
     },
   },
 });
