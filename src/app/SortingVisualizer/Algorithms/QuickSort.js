@@ -32,7 +32,6 @@ const quickSortFunc = (array) => {
   const arrInst = [];
 
   quickSort(tempArr, 0, tempArr.length - 1, arrInst);
-  console.log(arrInst);
   return arrInst;
 };
 

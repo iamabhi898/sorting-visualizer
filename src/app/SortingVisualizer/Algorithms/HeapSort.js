@@ -39,7 +39,6 @@ const heapSort = (array) => {
 
     heap_root(tempArr, 0, array_length, arrInst);
   }
-  console.log(arrInst);
 
   return arrInst;
 };
