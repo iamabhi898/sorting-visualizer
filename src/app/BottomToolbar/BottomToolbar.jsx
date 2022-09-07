@@ -21,10 +21,10 @@ const BottomToolbar = () => {
     let i = 0;
     const intervalChange = setInterval(() => {
       if (i >= arrInstance.length) {
-        dispatch(arrInstance[arrInstance.length - 1]);
         clearInterval(intervalChange);
+      } else {
+        dispatch(setArray(arrInstance[i]));
       }
-      dispatch(setArray(arrInstance[i]));
       i = i + 1;
     }, 20);
   };

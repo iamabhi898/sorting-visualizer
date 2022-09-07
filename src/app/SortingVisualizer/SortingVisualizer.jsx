@@ -19,18 +19,20 @@ function SortingVisualizer() {
       className={styles.barsWrapper}
       style={{ alignItems: "flex-" + (toggleView ? "end" : "start") }}
     >
-      {array.map((num, key) => {
-        let wid = (100 * 1.0) / ((2 * array.length + 1) * 1.0);
-        return (
-          <div
-            className={styles.bar}
-            key={key}
-            style={{ height: num + "%", width: wid + "%" }}
-          >
-            {numOfBars <= 15 ? num : null}{" "}
-          </div>
-        );
-      })}
+      {array != undefined
+        ? array.map((num, key) => {
+            let wid = (100 * 1.0) / ((2 * array.length + 1) * 1.0);
+            return (
+              <div
+                className={styles.bar}
+                key={key}
+                style={{ height: num + "%", width: wid + "%" }}
+              >
+                {numOfBars <= 15 ? num : null}{" "}
+              </div>
+            );
+          })
+        : "<<<<  UNDEFINED ARRAY  >>>>"}
     </div>
   );
 }
