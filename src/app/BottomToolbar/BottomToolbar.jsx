@@ -15,6 +15,7 @@ const BottomToolbar = () => {
   // states
   const [selectToggle, setSelectToggle] = useState(false);
   const [crrSelectSort, setCrrSelectedSort] = useState("");
+  const [sortTimeInterval, setSortTimeInterval] = useState(20);
 
   // Handle Visualization
   const visualize = (arrInstance) => {
@@ -26,7 +27,7 @@ const BottomToolbar = () => {
         dispatch(setArray(arrInstance[i]));
       }
       i = i + 1;
-    }, 20);
+    }, sortTimeInterval);
   };
 
   // Handle Array Instances of Sorting Algos

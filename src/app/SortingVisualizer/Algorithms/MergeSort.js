@@ -15,10 +15,38 @@ function merge(arr, l, m, r, arrInst) {
   while (i < n1 && j < n2) {
     if (L[i] <= R[j]) {
       arr[k] = L[i];
+      // shifting
+      let tk = k + 1;
+      let ti = i + 1;
+      let tj = j;
+      while (ti < n1) {
+        arr[tk] = L[ti];
+        ti++;
+        tk++;
+      }
+      while (tj < n2) {
+        arr[tk] = R[tj];
+        tj++;
+        tk++;
+      }
       arrInst.push([...arr]);
       i++;
     } else {
       arr[k] = R[j];
+      // shifting
+      let tk = k + 1;
+      let ti = i;
+      let tj = j + 1;
+      while (ti < n1) {
+        arr[tk] = L[ti];
+        ti++;
+        tk++;
+      }
+      while (tj < n2) {
+        arr[tk] = R[tj];
+        tj++;
+        tk++;
+      }
       arrInst.push([...arr]);
       j++;
     }
