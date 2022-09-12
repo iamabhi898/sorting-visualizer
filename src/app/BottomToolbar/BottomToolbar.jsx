@@ -1,20 +1,27 @@
 import React, { useState } from "react";
 import styles from "../../styles/styles.module.css";
-import { useSelector, useDispatch } from "react-redux";
-import { sortArray, setArray } from "../../redux/reducer";
+// SORTING ALGOS
 import bubbleSort from "../SortingVisualizer/Algorithms/BubbleSort";
 import heapSort from "../SortingVisualizer/Algorithms/HeapSort";
 import mergeSort from "../SortingVisualizer/Algorithms/MergeSort";
 import quickSort from "../SortingVisualizer/Algorithms/QuickSort";
+// REDUX - DISPATCHERS AND SELECTORS
+import { useSelector, useDispatch } from "react-redux";
+import {
+  setArray,
+  setSelectedSort,
+  setSortingInProcess,
+} from "../../redux/reducer";
 
 const BottomToolbar = () => {
   // DISPATCHER
   const dispatch = useDispatch();
   // SELECTOR
-  const { array, numOfBars } = useSelector((state) => state.globalState);
+  const { array, selectedSort, sortingInProcess } = useSelector(
+    (state) => state.globalState
+  );
   // states
   const [selectToggle, setSelectToggle] = useState(false);
-  const [crrSelectSort, setCrrSelectedSort] = useState("");
   const [sortTimeInterval, setSortTimeInterval] = useState(20);
 
   // Handle Visualization
@@ -22,6 +29,7 @@ const BottomToolbar = () => {
     let i = 0;
     const intervalChange = setInterval(() => {
       if (i >= arrInstance.length) {
+        dispatch(setSortingInProcess(false));
         clearInterval(intervalChange);
       } else {
         dispatch(setArray(arrInstance[i]));
@@ -32,6 +40,7 @@ const BottomToolbar = () => {
 
   // Handle Array Instances of Sorting Algos
   const handleArrayInstances = (sortAlgo) => {
+    dispatch(setSortingInProcess(true));
     switch (sortAlgo) {
       case "bubble":
         visualize(bubbleSort(array));
@@ -52,7 +61,9 @@ const BottomToolbar = () => {
 
   return (
     <div className={styles.inputsWrapper}>
-      <div className={styles.waterMark}>{crrSelectSort.toUpperCase()}</div>
+      <div className={styles.waterMark}>
+        {selectedSort.length ? selectedSort.toUpperCase() + " SORT" : null}
+      </div>
       <div className={`${styles.leftButtonWrapper} ${styles.dropupWrapper}`}>
         <button
           className={styles.button}
@@ -64,6 +75,7 @@ const BottomToolbar = () => {
               setSelectToggle(false);
             }, 300);
           }}
+          disabled={sortingInProcess}
         >
           Select Sorting Algorithm {selectToggle ? "👇" : "👆"}
         </button>
@@ -74,8 +86,7 @@ const BottomToolbar = () => {
           <button
             className={styles.button}
             onClick={() => {
-              setCrrSelectedSort("Merge Sort");
-              handleArrayInstances("merge");
+              dispatch(setSelectedSort("merge"));
             }}
           >
             Merge Sort
@@ -83,8 +94,7 @@ const BottomToolbar = () => {
           <button
             className={styles.button}
             onClick={() => {
-              setCrrSelectedSort("Heap Sort");
-              handleArrayInstances("heap");
+              dispatch(setSelectedSort("heap"));
             }}
           >
             Heap Sort
@@ -92,8 +102,7 @@ const BottomToolbar = () => {
           <button
             className={styles.button}
             onClick={() => {
-              setCrrSelectedSort("Quick Sort");
-              handleArrayInstances("quick");
+              dispatch(setSelectedSort("quick"));
             }}
           >
             Quick Sort
@@ -101,8 +110,7 @@ const BottomToolbar = () => {
           <button
             className={styles.button}
             onClick={() => {
-              setCrrSelectedSort("Bubble Sort");
-              handleArrayInstances("bubble");
+              dispatch(setSelectedSort("bubble"));
             }}
           >
             Bubble Sort
@@ -110,12 +118,23 @@ const BottomToolbar = () => {
         </div>
       </div>
       <div className={styles.rightButtonWrapper}>
-        <button className={styles.button} onClick={() => dispatch(sortArray())}>
-          Sort: {crrSelectSort}
-        </button>
+        {selectedSort.length ? (
+          <button
+            className={styles.button}
+            onClick={() => handleArrayInstances(selectedSort)}
+            disabled={sortingInProcess}
+          >
+            Sort Using {capitalize(selectedSort)} Sort
+          </button>
+        ) : null}
       </div>
     </div>
   );
 };
 
 export default BottomToolbar;
+
+// capitalize first letter
+function capitalize(s) {
+  return s && s[0].toUpperCase() + s.slice(1);
+}

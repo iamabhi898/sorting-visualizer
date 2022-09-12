@@ -6,6 +6,8 @@ export const stateSlice = createSlice({
     array: [],
     toggleView: false,
     numOfBars: 100,
+    sortingInProcess: false,
+    selectedSort: "",
   },
   reducers: {
     generateRandomArr: (state, action) => {
@@ -40,6 +42,12 @@ export const stateSlice = createSlice({
     setArray: (state, action) => {
       state.array = action.payload;
     },
+    setSortingInProcess: (state, action) => {
+      state.sortingInProcess = action.payload;
+    },
+    setSelectedSort: (state, action) => {
+      state.selectedSort = action.payload;
+    },
   },
 });
 
@@ -50,6 +58,8 @@ export const {
   sortArray,
   setNumOfBars,
   setArray,
+  setSortingInProcess,
+  setSelectedSort,
 } = stateSlice.actions;
 
 export default stateSlice.reducer;

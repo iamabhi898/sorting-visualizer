@@ -50,6 +50,11 @@
     transform: translateY(2px);
 }
 
+.button:disabled {
+    background-color: rgb(230, 230, 230);
+    cursor: not-allowed;
+}
+
 /* RIGHT PART OF TOP/BOTTOMBAR - CONTAINER */
 .rightButtonWrapper {
     margin-right: 10px;
@@ -80,6 +85,10 @@
 
 #slider:hover {
     background: #bebebe;
+}
+
+#slider:disabled {
+    cursor: not-allowed;
 }
   
 #slider::-webkit-slider-thumb {

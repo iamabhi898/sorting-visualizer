@@ -12,7 +12,9 @@ const TopToolbar = () => {
   // DISPATCHER
   const dispatch = useDispatch();
   // SELECTOR
-  const { numOfBars } = useSelector((state) => state.globalState);
+  const { numOfBars, sortingInProcess } = useSelector(
+    (state) => state.globalState
+  );
 
   return (
     <div className={styles.inputsWrapper}>
@@ -21,6 +23,7 @@ const TopToolbar = () => {
         <button
           className={styles.button}
           onClick={() => dispatch(generateRandomArr(numOfBars))}
+          disabled={sortingInProcess}
         >
           Generate New Random Array
         </button>
@@ -34,6 +37,7 @@ const TopToolbar = () => {
         <button
           className={styles.button}
           onClick={() => dispatch(reverseArray())}
+          disabled={sortingInProcess}
         >
           Reverse Array
         </button>
@@ -46,6 +50,7 @@ const TopToolbar = () => {
           min={"5"}
           max={"200"}
           value={numOfBars}
+          disabled={sortingInProcess}
           onChange={(event) => {
             dispatch(setNumOfBars(event.target.value));
           }}
