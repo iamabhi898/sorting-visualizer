@@ -151,6 +151,18 @@
     justify-content: center;
 }
 
+.greenBar {
+    background-color: #00d924;
+}
+
+.redBar {
+    background-color: #ff4343;
+}
+
+.yellowBar {
+    background-color: #e7ff13;
+}
+
 /* DROP UP MENU - SORTING ALGORITHMS */
 .dropupWrapper {
     position: relative;

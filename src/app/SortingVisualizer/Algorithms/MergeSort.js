@@ -13,6 +13,14 @@ function merge(arr, l, m, r, arrInst) {
   let k = l;
 
   while (i < n1 && j < n2) {
+    arrInst.push({
+      array: [...arr],
+      g1: -1,
+      g2: -1,
+      r1: k,
+      r2: j + m + 1,
+      y: -1,
+    });
     if (L[i] <= R[j]) {
       arr[k] = L[i];
       // shifting
@@ -29,7 +37,14 @@ function merge(arr, l, m, r, arrInst) {
         tj++;
         tk++;
       }
-      arrInst.push([...arr]);
+      arrInst.push({
+        array: [...arr],
+        g1: k,
+        g2: k + 1,
+        r1: -1,
+        r2: -1,
+        y: -1,
+      });
       i++;
     } else {
       arr[k] = R[j];
@@ -47,7 +62,14 @@ function merge(arr, l, m, r, arrInst) {
         tj++;
         tk++;
       }
-      arrInst.push([...arr]);
+      arrInst.push({
+        array: [...arr],
+        g1: k,
+        g2: j + m + 1,
+        r1: -1,
+        r2: -1,
+        y: -1,
+      });
       j++;
     }
     k++;
@@ -55,14 +77,30 @@ function merge(arr, l, m, r, arrInst) {
 
   while (i < n1) {
     arr[k] = L[i];
-    arrInst.push([...arr]);
+    arrInst.push({ array: [...arr], g1: -1, g2: -1, r1: -1, r2: k, y: -1 });
+    arrInst.push({ array: [...arr], g1: -1, g2: k, r1: -1, r2: -1, y: -1 });
     i++;
     k++;
   }
 
   while (j < n2) {
     arr[k] = R[j];
-    arrInst.push([...arr]);
+    arrInst.push({
+      array: [...arr],
+      g1: -1,
+      g2: -1,
+      r1: j + m + 1,
+      r2: k,
+      y: -1,
+    });
+    arrInst.push({
+      array: [...arr],
+      g1: j + m + 1,
+      g2: k,
+      r1: -1,
+      r2: -1,
+      y: -1,
+    });
     j++;
     k++;
   }
@@ -82,7 +120,7 @@ const mergeSort = (array) => {
   const tempArr = [...array];
   const arrInst = [];
   mergeSortFunc(tempArr, 0, tempArr.length - 1, arrInst);
-
+  arrInst.push({ array: [...tempArr], g1: -1, g2: -1, r1: -1, r2: -1, y: -1 });
   return arrInst;
 };
 

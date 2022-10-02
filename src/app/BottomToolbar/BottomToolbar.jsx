@@ -17,7 +17,7 @@ const BottomToolbar = () => {
   // DISPATCHER
   const dispatch = useDispatch();
   // SELECTOR
-  const { array, selectedSort, sortingInProcess } = useSelector(
+  const { arrayState, selectedSort, sortingInProcess } = useSelector(
     (state) => state.globalState
   );
   // states
@@ -43,16 +43,16 @@ const BottomToolbar = () => {
     dispatch(setSortingInProcess(true));
     switch (sortAlgo) {
       case "bubble":
-        visualize(bubbleSort(array));
+        visualize(bubbleSort(arrayState.array));
         break;
       case "heap":
-        visualize(heapSort(array));
+        visualize(heapSort(arrayState.array));
         break;
       case "merge":
-        visualize(mergeSort(array));
+        visualize(mergeSort(arrayState.array));
         break;
       case "quick":
-        visualize(quickSort(array));
+        visualize(quickSort(arrayState.array));
         break;
       default:
         console.log("no sorting algo opted");
