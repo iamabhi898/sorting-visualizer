@@ -44,6 +44,7 @@ const TopToolbar = () => {
       </div>
       {/* SLIDER ::: NUMBER OF BARS */}
       <div className={styles.rightButtonWrapper}>
+        <p className={styles.text}>Number of Elements in Array </p>
         <input
           type="range"
           id={styles.slider}

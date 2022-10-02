@@ -1,3 +1,10 @@
+.text {
+    padding: 10px;
+    color: #136462;
+    font-weight: 600;
+    font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+}
+ 
  /* APP - CONTAINER (TOPBAR, SV, BOTTOMBAR) */
 .svWrapper {
     display: flex;
@@ -42,8 +49,17 @@
     box-shadow: 0px 8px 49px -9px rgba(0,0,0,0.38);
 }
 
+.stopButton {
+    background-color: rgb(255, 68, 68);
+    color: white;
+}
+
 .button:hover {
     background-color: rgb(240, 240, 240);
+}
+
+.stopButton:hover {
+    background-color: rgb(255, 25, 25);
 }
 
 .button:active {
@@ -74,7 +90,7 @@
 
 #slider {
     -webkit-appearance: none;
-    width: 160px;
+    width: 120px;
     height: 8px;
     border-radius: 5px;  
     background: #b5b5b5;

@@ -22,7 +22,7 @@ const BottomToolbar = () => {
   );
   // states
   const [selectToggle, setSelectToggle] = useState(false);
-  const [sortTimeInterval, setSortTimeInterval] = useState(20);
+  const [sortTimeInterval, setSortTimeInterval] = useState(100);
 
   // Handle Visualization
   const visualize = (arrInstance) => {
@@ -118,6 +118,25 @@ const BottomToolbar = () => {
         </div>
       </div>
       <div className={styles.rightButtonWrapper}>
+        {/* SLIDER ::: SPEED OF SORTING */}
+        <p className={styles.text}>Speed </p>
+        <input
+          type="range"
+          id={styles.slider}
+          min={"0"}
+          max={"500"}
+          step={10}
+          value={sortTimeInterval}
+          disabled={sortingInProcess}
+          style={{ direction: "rtl" }}
+          onChange={(event) => {
+            // 1 => 999ms && 1001 => 1ms
+            setSortTimeInterval(Math.abs(event.target.value));
+          }}
+        />
+        <p id={styles.sliderRangeValue}>
+          {Math.round(500 - sortTimeInterval) / 100}
+        </p>
         {selectedSort.length ? (
           <button
             className={styles.button}
