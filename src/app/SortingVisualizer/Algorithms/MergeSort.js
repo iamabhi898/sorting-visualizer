@@ -65,7 +65,7 @@ function merge(arr, l, m, r, arrInst) {
       arrInst.push({
         array: [...arr],
         g1: k,
-        g2: j + m + 1,
+        g2: k + 1,
         r1: -1,
         r2: -1,
         y: -1,
